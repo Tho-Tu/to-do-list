@@ -1,5 +1,9 @@
-export default function createProject() {
+export default function createProject(name) {
+  let projectName = name;
   let projectToDo = [];
+
+  const getProjectName = () => projectName;
+  const updateProjectName = (update) => (projectName = update);
 
   const getProject = () => projectToDo;
 
@@ -10,5 +14,11 @@ export default function createProject() {
     projectToDo.splice(toDoIndex, 1);
   };
 
-  return { getProject, updateProject, deleteProject };
+  return {
+    getProjectName,
+    updateProjectName,
+    getProject,
+    updateProject,
+    deleteProject,
+  };
 }
