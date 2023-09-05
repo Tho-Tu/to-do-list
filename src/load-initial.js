@@ -1,5 +1,5 @@
-import createToDo from "./createToDo";
-import createProject from "./createProject";
+import createToDo from "./create-to-do";
+import createProject from "./create-project";
 
 export default function loadInitial() {
   // creates default project and todo

@@ -1,5 +1,13 @@
-import createToDo from "./createToDo.js";
-import createProject from "./createProject.js";
-import loadInitial from "./loadInitial.js";
+import createToDo from "./create-to-do.js";
+import createProject from "./create-project.js";
+import loadInitial from "./load-initial.js";
 
 loadInitial();
+
+const testOne = createToDo("exercise", "cardio", "today", "medium", "false");
+testOne.updateCompleted("true");
+console.log(`to do testOne: ${testOne.getCompleted()}`);
+
+const testProject = createProject("Test Project", testOne);
+
+console.log(testProject);

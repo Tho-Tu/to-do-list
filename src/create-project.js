@@ -1,4 +1,4 @@
-export default function createProject(name) {
+export default function createProject(name, toDoObject) {
   let projectName = name;
   let projectToDo = [];
 
@@ -6,10 +6,8 @@ export default function createProject(name) {
   const updateProjectName = (update) => (projectName = update);
 
   const getProject = () => projectToDo;
-
-  const updateProject = (toDoObject) => projectToDo.push(toDoObject);
-
-  const deleteProject = (toDoObject) => {
+  const updateProject = () => projectToDo.push(toDoObject);
+  const deleteProject = () => {
     let toDoIndex = projectToDo.indexOf(toDoObject);
     projectToDo.splice(toDoIndex, 1);
   };
