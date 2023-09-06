@@ -67,6 +67,8 @@ button:active {
   height: 24px;
 }
 
+/* dashboard section */
+
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -102,7 +104,57 @@ li button {
   width: 100%;
 }
 
+/* main content */
+
 .main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   background-color: rgb(252, 252, 252);
   padding: 2rem;
+}
+
+.main-heading {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fb7185;
+  padding: 1rem;
+  margin: 0;
+  color: white;
+}
+
+.add-to-do {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* list of to do's */
+
+.to-do {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff1f2;
+  padding: 1rem;
+  border-radius: 16px;
+}
+
+.to-do-title {
+  display: flex;
+  align-items: center;
+}
+
+.to-do button {
+  background-color: transparent;
+  padding: 0;
+  margin: 0 1rem;
+}
+
+.to-do-buttons button:active {
+  transform: translateY(2px);
+}
+
+.to-do img {
+  width: 24px;
 }
