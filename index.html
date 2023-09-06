@@ -7,14 +7,34 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <nav>To Do List</nav>
+    <nav>To Do List 📔</nav>
     <div id="content">
       <div class="dashboard">
+        <div class="home">
+          <h3>Home</h3>
+          <button class="all-tasks">All Tasks</button>
+          <button class="important-tasks">Important</button>
+        </div>
         <ul class="projects">
-          Projects
+          <h3>
+            Projects
+            <button class="add-button">
+              <img src="./components/icons/add.svg" alt="Add" class="icon" />
+            </button>
+          </h3>
+
+          <li><button class="general-project">General</button></li>
         </ul>
       </div>
-      <div class="main">to do example</div>
+      <div class="main">
+        <div class="main-heading"><h1>title</h1></div>
+        <div class="add-to-do">
+          Add To Do<button class="add-button">
+            <img src="./components/icons/add.svg" alt="Add" class="icon" />
+          </button>
+        </div>
+        <div class="to-do">to do example</div>
+      </div>
     </div>
     <script src="main.js"></script>
   </body>
