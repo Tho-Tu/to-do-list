@@ -2,7 +2,7 @@ import createToDo from "./create-to-do";
 import createProject from "./create-project.js";
 
 export default function domInteraction() {
-  //
+  projects();
 }
 
 // dashboard
@@ -12,13 +12,33 @@ function home() {
 }
 
 function projects() {
-  const addProjectButton = document.querySelector('#add-project-button"');
+  const addProjectButton = document.querySelector("#add-project-button");
   addProjectButton.addEventListener("click", () => {
-    createNewProjectLi();
-    createProject();
+    toggleCreateNewProject();
   });
 
-  const emptyProjectPrompt = () => {};
+  const newProjectLi = document.querySelector("#add-new-project");
+
+  const newProjectInput = document.querySelector("#new-project");
+  newProjectInput.addEventListener("click", () => {
+    //
+  });
+
+  const submitNewProject = document.querySelector("#submit-new-project");
+  submitNewProject.addEventListener("click", () => {
+    //
+  });
+
+  let projectDisplay = false;
+  const toggleCreateNewProject = () => {
+    if (projectDisplay === false) {
+      newProjectLi.setAttribute("style", "display: flex");
+      projectDisplay = true;
+    } else {
+      newProjectLi.setAttribute("style", "display: none");
+      projectDisplay = false;
+    }
+  };
 
   const createNewProjectLi = (projectName) => {
     const newProjectLi = document.createElement("li");

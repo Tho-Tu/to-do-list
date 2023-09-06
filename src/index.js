@@ -5,6 +5,8 @@ import domInteraction from "./dom-interaction.js";
 
 loadInitial();
 
+domInteraction();
+
 const testOne = createToDo("exercise", "cardio", "today", "medium", "false");
 testOne.updateCompleted("true");
 console.log(`to do testOne: ${testOne.getCompleted()}`);
