@@ -1,6 +1,7 @@
 import createToDo from "./create-to-do.js";
 import createProject from "./create-project.js";
 import loadInitial from "./load-initial.js";
+import domInteraction from "./dom-interaction.js";
 
 loadInitial();
 

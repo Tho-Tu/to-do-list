@@ -32,6 +32,7 @@ ul {
 
 li {
   list-style-type: none;
+  background-color: rgb(239, 239, 239);
 }
 
 h3 {
@@ -103,11 +104,20 @@ button:active {
 
 .projects li {
   font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
-li button {
-  display: block;
-  width: 100%;
+.projects li button:first-child {
+  flex: 1;
+}
+
+.projects li button:active {
+  transform: none;
+}
+
+.projects li img {
+  width: 24px;
 }
 
 /* main content */
@@ -137,7 +147,7 @@ li button {
 
 /* list of to do's */
 
-.to-do {
+.to-do-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -151,18 +161,18 @@ li button {
   align-items: center;
 }
 
-.to-do button {
+.to-do-card button {
   background-color: transparent;
   padding: 0;
   margin: 0 1rem;
 }
 
-.to-do button:active {
+.to-do-card button:active {
   background-color: none;
   box-shadow: none;
   transform: translateY(2px);
 }
 
-.to-do img {
+.to-do-card img {
   width: 24px;
 }
