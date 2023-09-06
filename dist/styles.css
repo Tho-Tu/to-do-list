@@ -9,6 +9,12 @@ button {
   margin: 0;
 }
 
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 nav {
   padding: 2rem;
   font-size: 3rem;
@@ -57,9 +63,9 @@ button:active {
 }
 
 #content {
+  flex: 1;
   display: grid;
   grid-template-columns: 280px 1fr;
-  height: 100vh;
 }
 
 .icon {
@@ -151,7 +157,9 @@ li button {
   margin: 0 1rem;
 }
 
-.to-do-buttons button:active {
+.to-do button:active {
+  background-color: none;
+  box-shadow: none;
   transform: translateY(2px);
 }
 
