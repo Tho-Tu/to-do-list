@@ -19,25 +19,30 @@
           <ul class="projects">
             <h3>
               Projects
-              <button class="add-button">
+              <button class="add-button" id="add-project-button">
                 <img src="./components/icons/add.svg" alt="Add" class="icon" />
               </button>
             </h3>
 
-            <li><button class="general-project">General</button></li>
+            <li>
+              <button data-project="general-project">General</button
+              ><button data-project-delete="general-project">
+                <img src="./components/icons/delete.svg" alt="delete" />
+              </button>
+            </li>
           </ul>
         </div>
         <div class="main">
           <div class="main-heading">
             <h1>Title</h1>
             <div class="add-to-do">
-              Add To Do<button class="add-button">
+              Add To Do<button class="add-button" id="add-to-do-button">
                 <img src="./components/icons/add.svg" alt="Add" class="icon" />
               </button>
             </div>
           </div>
 
-          <div class="to-do">
+          <div class="to-do-card">
             <div class="to-do-title">
               <button class="to-do-complete">
                 <img
@@ -48,10 +53,7 @@
             </div>
             <div class="to-do-buttons">
               <button class="to-do-favorite">
-                <img
-                  src="./components/icons/star.svg"
-                  alt="favourite"
-                /></button
+                <img src="./components/icons/star.svg" alt="favorite" /></button
               ><button class="to-do-edit">
                 <img src="./components/icons/edit.svg" alt="edit" /></button
               ><button class="to-do-delete">
