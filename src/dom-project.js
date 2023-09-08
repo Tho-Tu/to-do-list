@@ -1,7 +1,11 @@
 import createToDo from "./create-to-do";
 import createProject from "./create-project.js";
 
-export default function projectsDom() {
+export default function projectsDom({
+  getProjectArray,
+  updateProjectArray,
+  deleteProjectArray,
+}) {
   // toggle add new project with plus button
   const addProjectButton = document.querySelector("#add-project-button");
   addProjectButton.addEventListener("click", () => {
@@ -22,7 +26,7 @@ export default function projectsDom() {
   };
 
   // get user new project name upon form submit and append to div (project)
-  const createNewProjectLi = (projectName) => {
+  const displayAllProjects = (projectName) => {
     const newProjectLi = document.createElement("li");
     const newProjectButton = document.createElement("button");
     newProjectButton.textContent = `${projectName}`;
@@ -36,7 +40,7 @@ export default function projectsDom() {
     event.preventDefault();
 
     const newProjectName = document.querySelector("#new-project");
-    createNewProjectLi(newProjectName.value);
+    displayAllProjects(newProjectName.value);
     toggleCreateNewProject();
   });
 }
