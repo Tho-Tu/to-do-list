@@ -13,4 +13,6 @@ export default function loadInitial() {
     "false"
   );
   generalProject.updateProject(homework);
+
+  return generalProject;
 }

@@ -1,5 +1,8 @@
+import loadInitial from "./load-initial";
+
 export default function projects() {
   let projectArray = [];
+  // load default 'general' project
   projectArray.push(loadInitial());
 
   const getProjectArray = () => projectArray;
