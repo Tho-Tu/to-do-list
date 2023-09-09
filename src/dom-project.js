@@ -1,4 +1,3 @@
-import createToDo from "./create-to-do";
 import createProject from "./create-project.js";
 import editSVG from "./components/icons/edit.svg";
 import deleteSVG from "./components/icons/delete.svg";
@@ -56,8 +55,6 @@ export default function projectsDom({
     false
   );
 
-  // edit project name
-
   // display all projects after every project input (add/delete/edit)
   const allProjects = document.querySelector("#projects-list");
   function displayAllProjects() {
@@ -102,5 +99,5 @@ export default function projectsDom({
   }
   displayAllProjects();
 
-  function createEditPrompt() {}
+  function toggleEditButton() {}
 }
