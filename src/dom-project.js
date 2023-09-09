@@ -25,7 +25,6 @@ export default function projectsDom({
     }
   };
 
-  // get user new project name upon form submit and append to div (project)
   const displayAllProjects = (projectName) => {
     const newProjectLi = document.createElement("li");
     const newProjectButton = document.createElement("button");
@@ -35,12 +34,14 @@ export default function projectsDom({
     addNewProject.appendChild(newProjectLi);
   };
 
+  // get user new project name upon form submit and append to project array
   const submitNewProject = document.querySelector("#submit-new-project");
   submitNewProject.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const newProjectName = document.querySelector("#new-project");
-    displayAllProjects(newProjectName.value);
+    updateProjectArray(newProjectName.value);
+    console.log(getProjectArray);
     toggleCreateNewProject();
   });
 }

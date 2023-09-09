@@ -9,10 +9,10 @@ export default function loadInitial() {
     "homework",
     "finish todo project",
     "today",
-    "high",
+    "important",
     "false"
   );
-  generalProject.updateProject(homework);
+  generalProject.updateProjectToDo(homework);
 
   return generalProject;
 }
