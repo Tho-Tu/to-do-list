@@ -7,8 +7,8 @@ export default function projects() {
 
   const getProjectArray = () => projectArray;
   const updateProjectArray = (project) => projectArray.push(project);
-  const deleteProjectArray = (project) => {
-    let projectIndex = projectArray.indexOf(project);
+  const deleteProjectArray = (projectIndex) => {
+    // let projectIndex = projectArray.indexOf(project);
     projectArray.splice(projectIndex, 1);
   };
 

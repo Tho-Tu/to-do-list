@@ -16,35 +16,39 @@
             <button class="all-tasks">All Tasks</button>
             <button class="important-tasks">Important</button>
           </div>
-          <ul class="projects">
+          <div class="projects">
             <h3>
               Projects
               <button class="add-button" id="add-project-button">
                 <img src="./components/icons/add.svg" alt="Add" class="icon" />
               </button>
             </h3>
-
-            <li>
-              <button data-project="general-project">General</button
-              ><button data-project-edit="general-project">
-                <img src="./components/icons/edit.svg" alt="edit" /></button
-              ><button data-project-delete="general-project">
-                <img src="./components/icons/delete.svg" alt="delete" />
-              </button>
-            </li>
-            <li id="add-new-project">
-              <input
-                type="text"
-                name="new-project"
-                id="new-project"
-                placeholder="Project Name"
-                required
-              />
-              <button type="submit" id="submit-new-project">
-                <img src="./components/icons/add.svg" alt="" />
-              </button>
-            </li>
-          </ul>
+            <ul id="projects-list">
+              <li>
+                <button data-project="general-project">General</button
+                ><button data-project-edit="general-project">
+                  <img src="./components/icons/edit.svg" alt="edit" /></button
+                ><button data-project-delete="general-project">
+                  <img src="./components/icons/delete.svg" alt="delete" />
+                </button>
+              </li>
+            </ul>
+            <div>
+              <form action="./index.html" id="add-new-project">
+                <input
+                  type="text"
+                  name="new-project"
+                  id="new-project"
+                  placeholder="Project Name"
+                  maxlength="8"
+                  required
+                />
+                <button type="submit" id="submit-new-project">
+                  <img src="./components/icons/add.svg" alt="" />
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
         <div class="main">
           <div class="main-heading">

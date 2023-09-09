@@ -13,6 +13,7 @@ console.log(
     .getProjectToDo()[0]
     .getTitle()}`
 );
+
 projectsDom(userProject);
 
 const testOne = createToDo("exercise", "cardio", "today", "medium", "false");
