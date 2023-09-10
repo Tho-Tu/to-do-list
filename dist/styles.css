@@ -145,6 +145,10 @@ button:active {
   box-shadow: 0 0 5px #881337;
 }
 
+.edit-project-button {
+  position: relative;
+}
+
 /* main content */
 
 .main {

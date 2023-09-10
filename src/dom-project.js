@@ -55,6 +55,30 @@ export default function projectsDom({
     false
   );
 
+  function createEditButton(parentEl) {
+    const editProjectDiv = document.createElement("div");
+    editProjectDiv.setAttribute("style", "position: absolute");
+    // editProjectDiv.setAttribute("style", "display: block");
+
+    const editProjectForm = document.createElement("form");
+    editProjectForm.setAttribute("action", "./index.html");
+
+    const editProjectInput = document.createElement("input");
+    editProjectInput.setAttribute("type", "text");
+    editProjectInput.setAttribute("placeholder", "Edit Project Name");
+    editProjectForm.appendChild(editProjectInput);
+
+    const editProjectConfirm = document.createElement("button");
+    editProjectConfirm.setAttribute("type", "submit");
+    editProjectForm.appendChild(editProjectConfirm);
+
+    editProjectDiv.appendChild(editProjectForm);
+
+    parentEl.appendChild(editProjectDiv);
+  }
+
+  // get user edit project name upon form submit and edit project array
+
   // display all projects after every project input (add/delete/edit)
   const allProjects = document.querySelector("#projects-list");
   function displayAllProjects() {
@@ -63,6 +87,7 @@ export default function projectsDom({
       let projectName = item.getProjectName().toLowerCase();
 
       const newProjectLi = document.createElement("li");
+      newProjectLi.setAttribute("style", "position:relative");
 
       const newProjectButton = document.createElement("button");
       const editProjectButton = document.createElement("button");
@@ -75,10 +100,11 @@ export default function projectsDom({
       editIcon.src = editSVG;
       editProjectButton.appendChild(editIcon);
       editProjectButton.setAttribute(`type`, `button`);
+      editProjectButton.classList.add("edit-project-button");
       editProjectButton.setAttribute(`data-edit`, `${projectName}`);
-      editProjectButton.addEventListener("click", (newProjectName) => {
-        updateProjectName(newProjectName);
-        displayAllProjects();
+      editProjectButton.addEventListener("click", () => {
+        createEditButton(newProjectLi);
+        // displayAllProjects();
       });
 
       const deleteIcon = new Image();
@@ -98,6 +124,4 @@ export default function projectsDom({
     });
   }
   displayAllProjects();
-
-  function toggleEditButton() {}
 }
