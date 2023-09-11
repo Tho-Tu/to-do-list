@@ -3,6 +3,7 @@ import editSVG from "./components/icons/edit.svg";
 import deleteSVG from "./components/icons/delete.svg";
 import closeSVG from "./components/icons/close.svg";
 import addSVG from "./components/icons/add.svg";
+import doneSVG from "./components/icons/done.svg";
 
 export default function projectsDom({
   getProjectArray,
@@ -58,18 +59,23 @@ export default function projectsDom({
   function createEditButton(parentEl) {
     const editProjectDiv = document.createElement("div");
     editProjectDiv.setAttribute("style", "position: absolute");
-    // editProjectDiv.setAttribute("style", "display: block");
+    editProjectDiv.classList.add("edit-project-div");
 
     const editProjectForm = document.createElement("form");
     editProjectForm.setAttribute("action", "./index.html");
+    editProjectForm.classList.add("edit-project-form");
 
     const editProjectInput = document.createElement("input");
     editProjectInput.setAttribute("type", "text");
     editProjectInput.setAttribute("placeholder", "Edit Project Name");
+    editProjectInput.classList.add("edit-project-input");
     editProjectForm.appendChild(editProjectInput);
 
     const editProjectConfirm = document.createElement("button");
     editProjectConfirm.setAttribute("type", "submit");
+    const doneIcon = new Image();
+    doneIcon.src = doneSVG;
+    editProjectConfirm.append(doneIcon);
     editProjectForm.appendChild(editProjectConfirm);
 
     editProjectDiv.appendChild(editProjectForm);

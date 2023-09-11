@@ -129,8 +129,9 @@ button:active {
 #add-new-project {
   display: none;
 }
-
-#new-project {
+/* inputs */
+#new-project,
+.edit-project-input {
   width: 100%;
   border: none;
   padding: 8px;
@@ -145,8 +146,12 @@ button:active {
   box-shadow: 0 0 5px #881337;
 }
 
-.edit-project-button {
-  position: relative;
+.edit-project-div {
+  width: 100%;
+}
+
+.edit-project-form {
+  display: flex;
 }
 
 /* main content */
