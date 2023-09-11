@@ -59,7 +59,40 @@
               </button>
             </div>
           </div>
-
+          <div class="add-to-do-card" style="display: none">
+            <form action="./index.html" id="add-to-do-form">
+              <ul>
+                <li>
+                  <label for="to-do-title">To Do Title</label>
+                  <input
+                    type="text"
+                    name="to-do-title"
+                    id="to-do-title"
+                    placeholder="Title"
+                    required
+                  />
+                </li>
+                <li>
+                  <label for="to-do-description">Description (optional)</label>
+                  <input
+                    type="text"
+                    name="to-do-description"
+                    id="to-do-description"
+                    placeholder="Description"
+                  />
+                </li>
+                <li>
+                  <label for="to-do-due-date" required>Due Date</label
+                  ><input
+                    type="date"
+                    name="to-do-due-date"
+                    id="to-do-due-date"
+                  />
+                </li>
+              </ul>
+              <button type="submit" id="submit-to-do-button">Add To Do</button>
+            </form>
+          </div>
           <div class="to-do-card">
             <div class="to-do-title">
               <button class="to-do-complete">

@@ -45,11 +45,13 @@ button {
   font-size: 1rem;
 }
 
-button:hover {
+button:hover,
+#add-to-do-form button:hover {
   background-color: #ffe4e6;
 }
 
-button:active {
+button:active,
+#add-to-do-form button:active {
   background-color: #ffe4e6;
   box-shadow: 0 2px 8px #4c0519;
   transform: translateY(2px);
@@ -131,7 +133,8 @@ button:active {
 }
 /* inputs */
 #new-project,
-.edit-project-input {
+.edit-project-input,
+#add-to-do-form ul li input {
   width: 100%;
   border: none;
   padding: 8px;
@@ -181,7 +184,8 @@ button:active {
 
 /* list of to do's */
 
-.to-do-card {
+.to-do-card,
+.add-to-do-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -209,4 +213,29 @@ button:active {
 
 .to-do-card img {
   width: 24px;
+}
+
+/* add to do form */
+#add-to-do-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+#add-to-do-form ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#add-to-do-form ul li {
+  background-color: #fff1f2;
+}
+
+#add-to-do-form button {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid;
+  align-self: center;
 }
