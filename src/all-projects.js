@@ -7,6 +7,27 @@ export default function projects() {
   projectArray.push(loadInitial());
   let currentProject = loadInitial();
 
+  // push all to do into single array
+  function allToDo() {
+    let allToDoArray = [];
+    projectArray.forEach((project) => {
+      project.forEach((toDo) => {
+        allToDoArray.push(toDo);
+      });
+    });
+    currentProject = allToDoArray;
+  }
+
+  // filter for only important toDo
+  function importantToDo() {
+    let importantToDoArray = [];
+    projectArray.forEach((project) => {
+      project.forEach((toDo) => {
+        importantToDoArray.push(toDo);
+      });
+    });
+    currentProject = importantToDoArray;
+  }
   const getProjectArray = () => projectArray;
   const updateProjectArray = (project) => projectArray.push(project);
   const deleteProjectArray = (projectIndex) => {
@@ -19,5 +40,7 @@ export default function projects() {
     updateProjectArray,
     deleteProjectArray,
     currentProject,
+    allToDo,
+    importantToDo,
   };
 }

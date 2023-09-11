@@ -12,6 +12,8 @@ export default function projectsDom({
   updateProjectArray,
   deleteProjectArray,
   currentProject,
+  allToDo,
+  importantToDo,
 }) {
   // toggle add new project with plus button
   const addProjectButton = document.querySelector("#add-project-button");
