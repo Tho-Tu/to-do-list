@@ -56,7 +56,7 @@ export default function projectsDom({
     false
   );
 
-  function createEditButton(parentEl) {
+  function createEditButton(parentEl, item) {
     const editProjectDiv = document.createElement("div");
     editProjectDiv.setAttribute("style", "position: absolute");
     editProjectDiv.classList.add("edit-project-div");
@@ -64,6 +64,17 @@ export default function projectsDom({
     const editProjectForm = document.createElement("form");
     editProjectForm.setAttribute("action", "./index.html");
     editProjectForm.classList.add("edit-project-form");
+    editProjectForm.addEventListener(
+      "submit",
+      (event) => {
+        event.preventDefault();
+
+        item.updateProjectName(editProjectInput.value);
+        editProjectDiv.textContent = "";
+        displayAllProjects();
+      },
+      false
+    );
 
     const editProjectInput = document.createElement("input");
     editProjectInput.setAttribute("type", "text");
@@ -109,8 +120,7 @@ export default function projectsDom({
       editProjectButton.classList.add("edit-project-button");
       editProjectButton.setAttribute(`data-edit`, `${projectName}`);
       editProjectButton.addEventListener("click", () => {
-        createEditButton(newProjectLi);
-        // displayAllProjects();
+        createEditButton(newProjectLi, item);
       });
 
       const deleteIcon = new Image();
