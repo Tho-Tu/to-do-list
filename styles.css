@@ -184,6 +184,12 @@ button:active,
 
 /* list of to do's */
 
+#to-do-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .to-do-card,
 .add-to-do-card {
   display: grid;
