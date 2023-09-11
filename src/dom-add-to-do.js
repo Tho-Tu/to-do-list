@@ -2,7 +2,12 @@ import createToDo from "./create-to-do";
 import closeSVG from "./components/icons/close.svg";
 import addSVG from "./components/icons/add.svg";
 
-export default function toDoDom(currentProject) {
+export default function toDoDom(
+  getProjectArray,
+  updateProjectArray,
+  deleteProjectArray,
+  currentProject
+) {
   // toggle add new project with plus button
   const addToDoButton = document.querySelector("#add-to-do-button");
   addToDoButton.addEventListener("click", () => {
@@ -51,14 +56,15 @@ export default function toDoDom(currentProject) {
         false,
         false
       );
+      console.log("current project name: " + currentProject.getProjectName());
+      console.log(currentProject);
 
-      console.log(newToDo.getTitle());
-      console.log(newToDo.getDescription());
-      console.log(newToDo.getDueDate());
-      console.log(newToDo.getPriority());
-      console.log(newToDo.getCompleted());
+      // add newToDo to current project (inside of whole array)
+      let index = getProjectArray().indexOf(currentProject);
+      console.log(index);
+      getProjectArray()[index].updateProjectToDo(newToDo);
 
-      currentProject.updateProjectToDo(newToDo);
+      console.log(getProjectArray()[index].getProjectToDo()[1].getTitle());
     },
     false
   );

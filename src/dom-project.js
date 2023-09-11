@@ -1,4 +1,6 @@
 import createProject from "./create-project.js";
+import toDoDom from "./dom-add-to-do.js";
+import toDoCardDom from "./dom-card.js";
 import editSVG from "./components/icons/edit.svg";
 import deleteSVG from "./components/icons/delete.svg";
 import closeSVG from "./components/icons/close.svg";
@@ -9,6 +11,7 @@ export default function projectsDom({
   getProjectArray,
   updateProjectArray,
   deleteProjectArray,
+  currentProject,
 }) {
   // toggle add new project with plus button
   const addProjectButton = document.querySelector("#add-project-button");
@@ -94,8 +97,6 @@ export default function projectsDom({
     parentEl.appendChild(editProjectDiv);
   }
 
-  // get user edit project name upon form submit and edit project array
-
   // display all projects after every project input (add/delete/edit)
   const allProjects = document.querySelector("#projects-list");
   function displayAllProjects() {
@@ -112,6 +113,23 @@ export default function projectsDom({
 
       newProjectButton.textContent = `${projectName}`;
       newProjectButton.setAttribute(`data-project`, `${projectName}`);
+      newProjectButton.addEventListener("click", () => {
+        currentProject = item;
+
+        console.log(
+          `project DOM new button: ${currentProject.getProjectName()}`
+        );
+
+        // ensures creation of to do's are according to each project
+        toDoDom(
+          getProjectArray,
+          updateProjectArray,
+          deleteProjectArray,
+          currentProject
+        );
+        // shows to do cards in current project
+        toDoCardDom(currentProject);
+      });
 
       const editIcon = new Image();
       editIcon.src = editSVG;
