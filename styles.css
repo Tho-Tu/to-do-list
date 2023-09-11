@@ -186,17 +186,34 @@ button:active,
 
 .to-do-card,
 .add-to-do-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 50px 1fr 200px;
+  grid-template-rows: 80px 1fr;
+
   background-color: #fff1f2;
   padding: 1rem;
   border-radius: 16px;
 }
 
+.to-do-complete {
+  grid-column: 1/2;
+}
+
 .to-do-title {
-  display: flex;
-  align-items: center;
+  grid-column: 2/3;
+  justify-self: start;
+  align-self: center;
+  font-size: larger;
+}
+
+.to-do-buttons {
+  grid-column: 3/4;
+  align-self: center;
+}
+
+.to-do-description {
+  grid-column: 2/4;
+  grid-row: 2/3;
 }
 
 .to-do-card button {
