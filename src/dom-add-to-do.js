@@ -1,13 +1,9 @@
 import createToDo from "./create-to-do";
+import toDoCardDom from "./dom-card";
 import closeSVG from "./components/icons/close.svg";
 import addSVG from "./components/icons/add.svg";
 
-export default function toDoDom(
-  getProjectArray,
-  updateProjectArray,
-  deleteProjectArray,
-  currentProject
-) {
+export default function addToDoDom(getProjectArray, currentProject) {
   // toggle add new project with plus button
   const addToDoButton = document.querySelector("#add-to-do-button");
   addToDoButton.addEventListener("click", () => {
@@ -65,6 +61,8 @@ export default function toDoDom(
       getProjectArray()[index].updateProjectToDo(newToDo);
 
       console.log(getProjectArray()[index].getProjectToDo()[1].getTitle());
+
+      toDoCardDom(currentProject);
     },
     false
   );

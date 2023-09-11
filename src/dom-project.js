@@ -1,5 +1,5 @@
 import createProject from "./create-project.js";
-import toDoDom from "./dom-add-to-do.js";
+import addToDoDom from "./dom-add-to-do.js";
 import toDoCardDom from "./dom-card.js";
 import editSVG from "./components/icons/edit.svg";
 import deleteSVG from "./components/icons/delete.svg";
@@ -123,12 +123,7 @@ export default function projectsDom({
         );
 
         // ensures creation of to do's are according to each project
-        toDoDom(
-          getProjectArray,
-          updateProjectArray,
-          deleteProjectArray,
-          currentProject
-        );
+        addToDoDom(getProjectArray, currentProject);
         // shows to do cards in current project
         toDoCardDom(currentProject);
       });
