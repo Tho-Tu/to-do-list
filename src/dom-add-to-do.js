@@ -2,7 +2,7 @@ import createToDo from "./create-to-do";
 import closeSVG from "./components/icons/close.svg";
 import addSVG from "./components/icons/add.svg";
 
-export default function toDoDom() {
+export default function toDoDom(currentProject) {
   // toggle add new project with plus button
   const addToDoButton = document.querySelector("#add-to-do-button");
   addToDoButton.addEventListener("click", () => {
@@ -35,4 +35,31 @@ export default function toDoDom() {
   }
 
   // create new to do card
+  const toDoTitle = document.querySelector("#to-do-title");
+  const toDoDescription = document.querySelector("#to-do-description");
+  const toDoDueDate = document.querySelector("#to-do-due-date");
+
+  addToDoForm.addEventListener(
+    "submit",
+    (event) => {
+      event.preventDefault();
+
+      const newToDo = createToDo(
+        toDoTitle.value,
+        toDoDescription.value,
+        toDoDueDate.value,
+        false,
+        false
+      );
+
+      console.log(newToDo.getTitle());
+      console.log(newToDo.getDescription());
+      console.log(newToDo.getDueDate());
+      console.log(newToDo.getPriority());
+      console.log(newToDo.getCompleted());
+
+      currentProject.updateProjectToDo(newToDo);
+    },
+    false
+  );
 }
