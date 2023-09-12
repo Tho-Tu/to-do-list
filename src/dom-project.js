@@ -11,7 +11,7 @@ export default function projectsDom({
   getProjectArray,
   updateProjectArray,
   deleteProjectArray,
-  currentProject,
+  currentProjectIndex,
   allToDo,
   importantToDo,
 }) {
@@ -101,6 +101,8 @@ export default function projectsDom({
 
   // display all projects after every project input (add/delete/edit)
   const allProjects = document.querySelector("#projects-list");
+  const projectMainHeading = document.querySelector(".main-heading h1");
+
   function displayAllProjects() {
     allProjects.textContent = "";
     getProjectArray().forEach((item, index) => {
@@ -116,16 +118,16 @@ export default function projectsDom({
       newProjectButton.textContent = `${projectName}`;
       newProjectButton.setAttribute(`data-project`, `${projectName}`);
       newProjectButton.addEventListener("click", () => {
-        currentProject = item;
+        currentProjectIndex = index;
 
-        console.log(
-          `project DOM new button: ${currentProject.getProjectName()}`
-        );
+        console.log(`dom-project index: ${currentProjectIndex}`);
 
         // ensures creation of to do's are according to each project
-        addToDoDom(getProjectArray, currentProject);
+        addToDoDom(getProjectArray, currentProjectIndex);
         // shows to do cards in current project
-        toDoCardDom(currentProject);
+        toDoCardDom(getProjectArray, currentProjectIndex);
+
+        projectMainHeading.textContent = `${projectName.toUpperCase()}`;
       });
 
       const editIcon = new Image();

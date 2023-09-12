@@ -3,7 +3,7 @@ import toDoCardDom from "./dom-card";
 import closeSVG from "./components/icons/close.svg";
 import addSVG from "./components/icons/add.svg";
 
-export default function addToDoDom(getProjectArray, currentProject) {
+export default function addToDoDom(getProjectArray, currentProjectIndex) {
   // toggle add new project with plus button
   const addToDoButton = document.querySelector("#add-to-do-button");
   addToDoButton.addEventListener("click", () => {
@@ -45,24 +45,27 @@ export default function addToDoDom(getProjectArray, currentProject) {
     (event) => {
       event.preventDefault();
 
-      const newToDo = createToDo(
+      let newToDo = createToDo(
         toDoTitle.value,
         toDoDescription.value,
         toDoDueDate.value,
         false,
         false
       );
-      console.log("current project name: " + currentProject.getProjectName());
-      console.log(currentProject);
+      console.log("dom-add-todo index: " + currentProjectIndex);
 
-      // add newToDo to current project (inside of whole array)
-      let index = getProjectArray().indexOf(currentProject);
-      console.log(index);
-      getProjectArray()[index].updateProjectToDo(newToDo);
+      // add newToDo based on current project (inside of whole array)
 
-      console.log(getProjectArray()[index].getProjectToDo()[1].getTitle());
+      getProjectArray()[currentProjectIndex].updateProjectToDo(newToDo);
 
-      toDoCardDom(currentProject);
+      // console.log(
+      //   getProjectArray()[currentProjectIndex].getProjectToDo()[0].getTitle()
+      // );
+
+      toDoCardDom(getProjectArray, currentProjectIndex);
+
+      addToDoForm.reset();
+      // toggleAddToDo();
     },
     false
   );

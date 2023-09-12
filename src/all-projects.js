@@ -5,7 +5,7 @@ export default function projects() {
 
   // load default 'general' project
   projectArray.push(loadInitial());
-  let currentProject = loadInitial();
+  let currentProjectIndex = 0;
 
   // push all to do into single array
   function allToDo() {
@@ -15,7 +15,7 @@ export default function projects() {
         allToDoArray.push(toDo);
       });
     });
-    currentProject = allToDoArray;
+    return allToDoArray;
   }
 
   // filter for only important toDo
@@ -26,7 +26,7 @@ export default function projects() {
         importantToDoArray.push(toDo);
       });
     });
-    currentProject = importantToDoArray;
+    return importantToDoArray;
   }
   const getProjectArray = () => projectArray;
   const updateProjectArray = (project) => projectArray.push(project);
@@ -39,7 +39,7 @@ export default function projects() {
     getProjectArray,
     updateProjectArray,
     deleteProjectArray,
-    currentProject,
+    currentProjectIndex,
     allToDo,
     importantToDo,
   };

@@ -210,6 +210,15 @@ button:active,
   justify-self: start;
   align-self: center;
   font-size: larger;
+  display: flex;
+  gap: 2rem;
+}
+
+.to-do-due-date {
+  font-size: medium;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 4px 8px;
 }
 
 .to-do-buttons {

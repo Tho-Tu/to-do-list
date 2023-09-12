@@ -9,6 +9,3 @@ const userProject = projects();
 projectsDom(userProject);
 
 // toDoDom(userProject);
-
-const testOne = createToDo("exercise", "cardio", "today", "medium", "false");
-testOne.updateCompleted("true");
