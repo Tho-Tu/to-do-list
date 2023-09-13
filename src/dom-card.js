@@ -11,79 +11,85 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
   const toDoSection = document.querySelector("#to-do-section");
   toDoSection.textContent = "";
 
-  // console.log("dom-card index: " + currentProjectIndex);
+  if (isNaN(currentProjectIndex)) {
+    currentProjectIndex.forEach(loadToDo);
+  } else {
+    getProjectArray[currentProjectIndex].getProjectToDo().forEach(loadToDo);
+  }
 
-  getProjectArray[currentProjectIndex]
-    .getProjectToDo()
-    .forEach((toDoObject, index) => {
-      console.log(
-        `${toDoObject.getTitle()} Completed: ${toDoObject.getCompleted()} Priority: ${toDoObject.getPriority()}`
-      );
-      const toDoCard = document.createElement("div");
-      toDoCard.classList.add("to-do-card");
+  function loadToDo(toDoObject, index) {
+    console.log(
+      `${toDoObject.getTitle()} Completed: ${toDoObject.getCompleted()} Priority: ${toDoObject.getPriority()}`
+    );
+    const toDoCard = document.createElement("div");
+    toDoCard.classList.add("to-do-card");
 
-      const toDoComplete = document.createElement("button");
-      toDoComplete.classList.add("to-do-complete");
-      toDoComplete.setAttribute("type", "button");
-      const checkBoxIcon = new Image();
-      checkBoxIcon.src =
-        toDoObject.getCompleted() === false ? checkBoxOutlineSVG : checkBoxSVG;
-      toDoComplete.appendChild(checkBoxIcon);
-      toDoComplete.addEventListener("click", () => {
-        completeCheckBox(toDoObject, checkBoxIcon);
-      });
-      toDoCard.appendChild(toDoComplete);
-
-      const toDoTitle = document.createElement("div");
-      toDoTitle.classList.add("to-do-title");
-      toDoTitle.textContent = `${toDoObject.getTitle()}`;
-      toDoCard.appendChild(toDoTitle);
-
-      const toDoDueDate = document.createElement("div");
-      toDoDueDate.classList.add("to-do-due-date");
-      toDoDueDate.textContent = `Due Date: ${toDoObject.getDueDate()}`;
-      toDoTitle.appendChild(toDoDueDate);
-
-      const toDoButtons = document.createElement("div");
-      toDoButtons.classList.add("to-do-buttons");
-
-      const toDoFavorite = document.createElement("button");
-      const starIcon = new Image();
-      starIcon.src =
-        toDoObject.getPriority() === false ? starSVG : hotelClassSVG;
-      toDoFavorite.appendChild(starIcon);
-      toDoFavorite.addEventListener("click", () => {
-        importantStar(toDoObject, starIcon);
-      });
-
-      const toDoEdit = document.createElement("button");
-      const editIcon = new Image();
-      editIcon.src = editSVG;
-      toDoEdit.appendChild(editIcon);
-
-      const toDoDelete = document.createElement("button");
-      const deleteIcon = new Image();
-      deleteIcon.src = deleteSVG;
-      toDoDelete.appendChild(deleteIcon);
-      toDoDelete.addEventListener("click", () => {
-        getProjectArray[currentProjectIndex].deleteProjectToDo(toDoObject);
-        toDoCardDom(getProjectArray, currentProjectIndex);
-      });
-
-      toDoButtons.appendChild(toDoFavorite);
-      toDoButtons.appendChild(toDoEdit);
-      toDoButtons.appendChild(toDoDelete);
-
-      toDoCard.appendChild(toDoButtons);
-
-      const toDoDescription = document.createElement("div");
-      toDoDescription.classList.add("to-do-description");
-      toDoDescription.textContent = `${toDoObject.getDescription()}`;
-
-      toDoCard.appendChild(toDoDescription);
-
-      toDoSection.appendChild(toDoCard);
+    const toDoTitle = document.createElement("div");
+    const toDoComplete = document.createElement("button");
+    toDoComplete.classList.add("to-do-complete");
+    toDoComplete.setAttribute("type", "button");
+    const checkBoxIcon = new Image();
+    if (toDoObject.getCompleted() === false) {
+      checkBoxIcon.src = checkBoxOutlineSVG;
+      toDoTitle.setAttribute("style", "text-decoration: none");
+    } else {
+      checkBoxIcon.src = checkBoxSVG;
+      toDoTitle.setAttribute("style", "text-decoration: line-through");
+    }
+    toDoComplete.appendChild(checkBoxIcon);
+    toDoComplete.addEventListener("click", () => {
+      completeCheckBox(toDoObject, checkBoxIcon, toDoTitle);
     });
+    toDoCard.appendChild(toDoComplete);
+
+    toDoTitle.classList.add("to-do-title");
+    toDoTitle.textContent = `${toDoObject.getTitle()}`;
+    toDoCard.appendChild(toDoTitle);
+
+    const toDoDueDate = document.createElement("div");
+    toDoDueDate.classList.add("to-do-due-date");
+    toDoDueDate.textContent = `Due Date: ${toDoObject.getDueDate()}`;
+    toDoTitle.appendChild(toDoDueDate);
+
+    const toDoButtons = document.createElement("div");
+    toDoButtons.classList.add("to-do-buttons");
+
+    const toDoFavorite = document.createElement("button");
+    const starIcon = new Image();
+    starIcon.src = toDoObject.getPriority() === false ? starSVG : hotelClassSVG;
+    toDoFavorite.appendChild(starIcon);
+    toDoFavorite.addEventListener("click", () => {
+      importantStar(toDoObject, starIcon);
+    });
+
+    const toDoEdit = document.createElement("button");
+    const editIcon = new Image();
+    editIcon.src = editSVG;
+    toDoEdit.appendChild(editIcon);
+
+    const toDoDelete = document.createElement("button");
+    const deleteIcon = new Image();
+    deleteIcon.src = deleteSVG;
+    toDoDelete.appendChild(deleteIcon);
+    toDoDelete.addEventListener("click", () => {
+      getProjectArray[currentProjectIndex].deleteProjectToDo(toDoObject);
+      toDoCardDom(getProjectArray, currentProjectIndex);
+    });
+
+    toDoButtons.appendChild(toDoFavorite);
+    toDoButtons.appendChild(toDoEdit);
+    toDoButtons.appendChild(toDoDelete);
+
+    toDoCard.appendChild(toDoButtons);
+
+    const toDoDescription = document.createElement("div");
+    toDoDescription.classList.add("to-do-description");
+    toDoDescription.textContent = `${toDoObject.getDescription()}`;
+
+    toDoCard.appendChild(toDoDescription);
+
+    toDoSection.appendChild(toDoCard);
+  }
 
   // display all to do cards for all projects
   // display only important to do cards
@@ -92,17 +98,16 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
   //
   // each cards need read, title, description, due date, important, edit, delete
 
-  function completeCheckBox(toDoObject, checkBoxIcon) {
+  function completeCheckBox(toDoObject, checkBoxIcon, toDoTitle) {
     if (toDoObject.getCompleted() === false) {
       toDoObject.updateCompleted(true);
       checkBoxIcon.src = checkBoxSVG;
+      toDoTitle.setAttribute("style", "text-decoration:line-through");
     } else {
       toDoObject.updateCompleted(false);
       checkBoxIcon.src = checkBoxOutlineSVG;
+      toDoTitle.setAttribute("style", "text-decoration:none");
     }
-    console.log(
-      `${toDoObject.getTitle()} Completed: ${toDoObject.getCompleted()} Priority: ${toDoObject.getPriority()}`
-    );
     return checkBoxIcon;
   }
 
@@ -114,9 +119,6 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
       toDoObject.updatePriority(false);
       starIcon.src = starSVG;
     }
-    console.log(
-      `${toDoObject.getTitle()} Completed: ${toDoObject.getCompleted()} Priority: ${toDoObject.getPriority()}`
-    );
     return starIcon;
   }
 }

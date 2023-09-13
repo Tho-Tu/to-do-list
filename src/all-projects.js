@@ -14,7 +14,7 @@ export default function projects() {
   function allToDo() {
     let allToDoArray = [];
     projectArray.forEach((project) => {
-      project.forEach((toDo) => {
+      project.getProjectToDo().forEach((toDo) => {
         allToDoArray.push(toDo);
       });
     });
@@ -25,8 +25,10 @@ export default function projects() {
   function importantToDo() {
     let importantToDoArray = [];
     projectArray.forEach((project) => {
-      project.forEach((toDo) => {
-        importantToDoArray.push(toDo);
+      project.getProjectToDo().forEach((toDo) => {
+        if (toDo.getPriority() === true) {
+          importantToDoArray.push(toDo);
+        }
       });
     });
     return importantToDoArray;

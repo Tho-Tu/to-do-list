@@ -8,17 +8,15 @@ import closeSVG from "./components/icons/close.svg";
 import addSVG from "./components/icons/add.svg";
 import doneSVG from "./components/icons/done.svg";
 
-export default function projectsDom(userProject) {
-  let {
-    getProjectArray,
-    updateProjectArray,
-    deleteProjectArray,
-    getCurrentProjectIndex,
-    updateCurrentProjectIndex,
-    allToDo,
-    importantToDo,
-  } = userProject;
-
+export default function projectsDom({
+  getProjectArray,
+  updateProjectArray,
+  deleteProjectArray,
+  getCurrentProjectIndex,
+  updateCurrentProjectIndex,
+  allToDo,
+  importantToDo,
+}) {
   // toggle add new project with plus button
   const addProjectButton = document.querySelector("#add-project-button");
   addProjectButton.addEventListener("click", () => {
