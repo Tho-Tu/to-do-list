@@ -9,12 +9,12 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
   const toDoSection = document.querySelector("#to-do-section");
   toDoSection.textContent = "";
 
-  console.log("dom-card index: " + currentProjectIndex);
+  // console.log("dom-card index: " + currentProjectIndex);
 
-  getProjectArray()
-    [currentProjectIndex].getProjectToDo()
+  getProjectArray[currentProjectIndex]
+    .getProjectToDo()
     .forEach((toDoObject, index) => {
-      console.log(toDoObject.getTitle());
+      // console.log(toDoObject.getTitle());
       const toDoCard = document.createElement("div");
       toDoCard.classList.add("to-do-card");
 

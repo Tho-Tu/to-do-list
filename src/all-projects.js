@@ -7,6 +7,9 @@ export default function projects() {
   projectArray.push(loadInitial());
   let currentProjectIndex = 0;
 
+  const getCurrentProjectIndex = () => currentProjectIndex;
+  const updateCurrentProjectIndex = (update) => (currentProjectIndex = update);
+
   // push all to do into single array
   function allToDo() {
     let allToDoArray = [];
@@ -39,7 +42,8 @@ export default function projects() {
     getProjectArray,
     updateProjectArray,
     deleteProjectArray,
-    currentProjectIndex,
+    getCurrentProjectIndex,
+    updateCurrentProjectIndex,
     allToDo,
     importantToDo,
   };
