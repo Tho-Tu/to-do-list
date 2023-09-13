@@ -16,7 +16,9 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
   getProjectArray[currentProjectIndex]
     .getProjectToDo()
     .forEach((toDoObject, index) => {
-      // console.log(toDoObject.getTitle());
+      console.log(
+        `${toDoObject.getTitle()} Completed: ${toDoObject.getCompleted()} Priority: ${toDoObject.getPriority()}`
+      );
       const toDoCard = document.createElement("div");
       toDoCard.classList.add("to-do-card");
 
@@ -24,9 +26,9 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
       toDoComplete.classList.add("to-do-complete");
       toDoComplete.setAttribute("type", "button");
       const checkBoxIcon = new Image();
-      checkBoxIcon.src = checkBoxOutlineSVG;
-      toDoComplete.appendChild(completeCheckBox(toDoObject, checkBoxIcon));
-
+      checkBoxIcon.src =
+        toDoObject.getCompleted() === false ? checkBoxOutlineSVG : checkBoxSVG;
+      toDoComplete.appendChild(checkBoxIcon);
       toDoComplete.addEventListener("click", () => {
         completeCheckBox(toDoObject, checkBoxIcon);
       });
@@ -47,7 +49,8 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
 
       const toDoFavorite = document.createElement("button");
       const starIcon = new Image();
-      starIcon.src = starSVG;
+      starIcon.src =
+        toDoObject.getPriority() === false ? starSVG : hotelClassSVG;
       toDoFavorite.appendChild(starIcon);
       toDoFavorite.addEventListener("click", () => {
         importantStar(toDoObject, starIcon);
@@ -97,6 +100,9 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
       toDoObject.updateCompleted(false);
       checkBoxIcon.src = checkBoxOutlineSVG;
     }
+    console.log(
+      `${toDoObject.getTitle()} Completed: ${toDoObject.getCompleted()} Priority: ${toDoObject.getPriority()}`
+    );
     return checkBoxIcon;
   }
 
@@ -108,5 +114,9 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
       toDoObject.updatePriority(false);
       starIcon.src = starSVG;
     }
+    console.log(
+      `${toDoObject.getTitle()} Completed: ${toDoObject.getCompleted()} Priority: ${toDoObject.getPriority()}`
+    );
+    return starIcon;
   }
 }

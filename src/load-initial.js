@@ -9,8 +9,8 @@ export default function loadInitial() {
     "homework",
     "finish todo project",
     "2023-09-16",
-    "important",
-    "false"
+    false,
+    false
   );
   generalProject.updateProjectToDo(homework);
 
