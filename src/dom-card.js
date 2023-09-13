@@ -1,5 +1,7 @@
-import checkBoxSVG from "./components/icons/check-box-outline.svg";
+import checkBoxOutlineSVG from "./components/icons/check-box-outline.svg";
+import checkBoxSVG from "./components/icons/check-box.svg";
 import starSVG from "./components/icons/star.svg";
+import hotelClassSVG from "./components/icons/hotel-class.svg";
 import editSVG from "./components/icons/edit.svg";
 import deleteSVG from "./components/icons/delete.svg";
 
@@ -22,8 +24,12 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
       toDoComplete.classList.add("to-do-complete");
       toDoComplete.setAttribute("type", "button");
       const checkBoxIcon = new Image();
-      checkBoxIcon.src = checkBoxSVG;
-      toDoComplete.appendChild(checkBoxIcon);
+      checkBoxIcon.src = checkBoxOutlineSVG;
+      toDoComplete.appendChild(completeCheckBox(toDoObject, checkBoxIcon));
+
+      toDoComplete.addEventListener("click", () => {
+        completeCheckBox(toDoObject, checkBoxIcon);
+      });
       toDoCard.appendChild(toDoComplete);
 
       const toDoTitle = document.createElement("div");
@@ -43,6 +49,9 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
       const starIcon = new Image();
       starIcon.src = starSVG;
       toDoFavorite.appendChild(starIcon);
+      toDoFavorite.addEventListener("click", () => {
+        importantStar(toDoObject, starIcon);
+      });
 
       const toDoEdit = document.createElement("button");
       const editIcon = new Image();
@@ -53,6 +62,10 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
       const deleteIcon = new Image();
       deleteIcon.src = deleteSVG;
       toDoDelete.appendChild(deleteIcon);
+      toDoDelete.addEventListener("click", () => {
+        getProjectArray[currentProjectIndex].deleteProjectToDo(toDoObject);
+        toDoCardDom(getProjectArray, currentProjectIndex);
+      });
 
       toDoButtons.appendChild(toDoFavorite);
       toDoButtons.appendChild(toDoEdit);
@@ -75,4 +88,25 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
   // all of the above depends on currentProjectIndex
   //
   // each cards need read, title, description, due date, important, edit, delete
+
+  function completeCheckBox(toDoObject, checkBoxIcon) {
+    if (toDoObject.getCompleted() === false) {
+      toDoObject.updateCompleted(true);
+      checkBoxIcon.src = checkBoxSVG;
+    } else {
+      toDoObject.updateCompleted(false);
+      checkBoxIcon.src = checkBoxOutlineSVG;
+    }
+    return checkBoxIcon;
+  }
+
+  function importantStar(toDoObject, starIcon) {
+    if (toDoObject.getPriority() === false) {
+      toDoObject.updatePriority(true);
+      starIcon.src = hotelClassSVG;
+    } else {
+      toDoObject.updatePriority(false);
+      starIcon.src = starSVG;
+    }
+  }
 }

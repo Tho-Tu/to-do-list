@@ -8,7 +8,7 @@ export default function loadInitial() {
   const homework = createToDo(
     "homework",
     "finish todo project",
-    "today",
+    "2023-09-16",
     "important",
     "false"
   );

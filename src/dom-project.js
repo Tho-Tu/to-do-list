@@ -1,6 +1,6 @@
 import createProject from "./create-project.js";
 import createToDo from "./create-to-do";
-import addToDoDom from "./dom-add-to-do.js";
+import toggleAddToDoDom from "./dom-add-to-do.js";
 import toDoCardDom from "./dom-card.js";
 import editSVG from "./components/icons/edit.svg";
 import deleteSVG from "./components/icons/delete.svg";
@@ -8,15 +8,17 @@ import closeSVG from "./components/icons/close.svg";
 import addSVG from "./components/icons/add.svg";
 import doneSVG from "./components/icons/done.svg";
 
-export default function projectsDom({
-  getProjectArray,
-  updateProjectArray,
-  deleteProjectArray,
-  getCurrentProjectIndex,
-  updateCurrentProjectIndex,
-  allToDo,
-  importantToDo,
-}) {
+export default function projectsDom(userProject) {
+  let {
+    getProjectArray,
+    updateProjectArray,
+    deleteProjectArray,
+    getCurrentProjectIndex,
+    updateCurrentProjectIndex,
+    allToDo,
+    importantToDo,
+  } = userProject;
+
   // toggle add new project with plus button
   const addProjectButton = document.querySelector("#add-project-button");
   addProjectButton.addEventListener("click", () => {
@@ -104,7 +106,7 @@ export default function projectsDom({
   // display all projects after every project input (add/delete/edit)
   const allProjects = document.querySelector("#projects-list");
   const projectMainHeading = document.querySelector(".main-heading h1");
-
+  // Load on page start up
   toDoCardDom(getProjectArray(), getCurrentProjectIndex());
 
   function displayAllProjects() {
@@ -123,14 +125,7 @@ export default function projectsDom({
       newProjectButton.setAttribute(`data-project`, `${projectName}`);
       newProjectButton.addEventListener("click", () => {
         updateCurrentProjectIndex(index);
-
-        console.log(`dom-project index: ${getCurrentProjectIndex()}`);
-
-        // addToDoDom(getProjectArray(), getCurrentProjectIndex());
-
-        // shows to do cards in current project
         toDoCardDom(getProjectArray(), getCurrentProjectIndex());
-
         projectMainHeading.textContent = `${projectName.toUpperCase()}`;
       });
 
@@ -161,45 +156,14 @@ export default function projectsDom({
     });
   }
   displayAllProjects();
+  toggleAddToDoDom();
 
-  const addToDoForm = document.querySelector("#add-to-do-form");
-  function addToDoDom() {
-    // toggle add new project with plus button
-    const addToDoButton = document.querySelector("#add-to-do-button");
-    addToDoButton.addEventListener("click", () => {
-      toggleAddToDo();
-    });
-
-    const addToDoCard = document.querySelector(".add-to-do-card");
-
-    let addToDoDisplay = false;
-    function toggleAddToDo() {
-      const addIcon = new Image();
-      addIcon.src = addSVG;
-
-      const closeIcon = new Image();
-      closeIcon.src = closeSVG;
-
-      if (addToDoDisplay === false) {
-        addToDoCard.setAttribute("style", "display: flex");
-        addToDoDisplay = true;
-        addToDoButton.textContent = "";
-        addToDoButton.appendChild(closeIcon);
-      } else {
-        addToDoCard.setAttribute("style", "display: none");
-        addToDoDisplay = false;
-        addToDoButton.textContent = "";
-        addToDoButton.appendChild(addIcon);
-        addToDoForm.reset();
-      }
-    }
-  }
-  // ensures creation of to do's are according to each project
-  addToDoDom();
   // create new to do card
   const toDoTitle = document.querySelector("#to-do-title");
   const toDoDescription = document.querySelector("#to-do-description");
   const toDoDueDate = document.querySelector("#to-do-due-date");
+
+  const addToDoForm = document.querySelector("#add-to-do-form");
   addToDoForm.addEventListener(
     "submit",
     (event) => {
@@ -212,22 +176,13 @@ export default function projectsDom({
         false,
         false
       );
-      // console.log("dom-add-todo index: " + currentProjectIndex);
-
-      // add newToDo based on current project (inside of whole array)
 
       getProjectArray()[getCurrentProjectIndex()].updateProjectToDo(newToDo);
-
-      // console.log(
-      //   `project to do according to index: ${currentProjectIndex} ${getProjectArray[
-      //     currentProjectIndex
-      //   ].getProjectToDo()}`
-      // );
 
       toDoCardDom(getProjectArray(), getCurrentProjectIndex());
 
       addToDoForm.reset();
-      // toggleAddToDo();
+      toggleAddToDoDom();
     },
     false
   );
