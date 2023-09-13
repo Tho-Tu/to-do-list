@@ -11,6 +11,7 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
   const toDoSection = document.querySelector("#to-do-section");
   toDoSection.textContent = "";
 
+  // determines whether to load all tasks/important/project
   if (isNaN(currentProjectIndex)) {
     currentProjectIndex.forEach(loadToDo);
   } else {

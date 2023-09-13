@@ -13,4 +13,9 @@ export default function homeDom({
   allTasks.addEventListener("click", () => {
     toDoCardDom(getProjectArray(), allToDo());
   });
+
+  const importantTasks = document.querySelector(".important-tasks");
+  importantTasks.addEventListener("click", () => {
+    toDoCardDom(getProjectArray(), importantToDo());
+  });
 }
