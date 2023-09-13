@@ -172,7 +172,8 @@ export default function projectsDom({
         toDoDescription.value,
         toDoDueDate.value,
         false,
-        false
+        false,
+        getCurrentProjectIndex()
       );
 
       getProjectArray()[getCurrentProjectIndex()].updateProjectToDo(newToDo);

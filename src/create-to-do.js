@@ -3,7 +3,8 @@ export default function createToDo(
   description,
   dueDate,
   priority,
-  completed
+  completed,
+  currentProject
 ) {
   const getTitle = () => title;
   const getDescription = () => description;
@@ -39,5 +40,6 @@ export default function createToDo(
     updateDueDate,
     updatePriority,
     updateCompleted,
+    currentProject,
   };
 }

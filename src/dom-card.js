@@ -12,7 +12,7 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
   toDoSection.textContent = "";
 
   // determines whether to load all tasks/important/project
-  if (isNaN(currentProjectIndex)) {
+  if (isNaN(currentProjectIndex) || currentProjectIndex.length === 0) {
     currentProjectIndex.forEach(loadToDo);
   } else {
     getProjectArray[currentProjectIndex].getProjectToDo().forEach(loadToDo);
@@ -73,7 +73,7 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
     deleteIcon.src = deleteSVG;
     toDoDelete.appendChild(deleteIcon);
     toDoDelete.addEventListener("click", () => {
-      getProjectArray[currentProjectIndex].deleteProjectToDo(toDoObject);
+      getProjectArray[toDoObject.currentProject].deleteProjectToDo(toDoObject);
       toDoCardDom(getProjectArray, currentProjectIndex);
     });
 

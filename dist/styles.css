@@ -207,11 +207,11 @@ button:active,
 
 .to-do-title {
   grid-column: 2/3;
-  justify-self: start;
   align-self: center;
   font-size: larger;
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
+  padding: 8px;
 }
 
 .to-do-due-date {
