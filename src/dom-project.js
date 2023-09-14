@@ -105,7 +105,7 @@ export default function projectsDom({
   const allProjects = document.querySelector("#projects-list");
   const projectMainHeading = document.querySelector(".main-heading h1");
   // Load on page start up
-  toDoCardDom(getProjectArray(), getCurrentProjectIndex());
+  toDoCardDom(getProjectArray(), getCurrentProjectIndex(), null);
 
   function displayAllProjects() {
     allProjects.textContent = "";
@@ -123,7 +123,7 @@ export default function projectsDom({
       newProjectButton.setAttribute(`data-project`, `${projectName}`);
       newProjectButton.addEventListener("click", () => {
         updateCurrentProjectIndex(index);
-        toDoCardDom(getProjectArray(), getCurrentProjectIndex());
+        toDoCardDom(getProjectArray(), getCurrentProjectIndex(), null);
         projectMainHeading.textContent = `${projectName.toUpperCase()}`;
       });
 
@@ -178,7 +178,7 @@ export default function projectsDom({
 
       getProjectArray()[getCurrentProjectIndex()].updateProjectToDo(newToDo);
 
-      toDoCardDom(getProjectArray(), getCurrentProjectIndex());
+      toDoCardDom(getProjectArray(), getCurrentProjectIndex(), null);
 
       addToDoForm.reset();
       toggleAddToDoDom();

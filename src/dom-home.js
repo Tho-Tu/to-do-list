@@ -13,14 +13,13 @@ export default function homeDom({
 
   const allTasks = document.querySelector(".all-tasks");
   allTasks.addEventListener("click", () => {
-    console.log(allToDo());
-    toDoCardDom(getProjectArray(), allToDo());
+    toDoCardDom(getProjectArray(), null, allToDo);
     projectMainHeading.textContent = "All Tasks";
   });
 
   const importantTasks = document.querySelector(".important-tasks");
   importantTasks.addEventListener("click", () => {
-    toDoCardDom(getProjectArray(), importantToDo());
+    toDoCardDom(getProjectArray(), null, importantToDo);
     projectMainHeading.textContent = "Important";
   });
 }

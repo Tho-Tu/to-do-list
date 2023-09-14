@@ -5,15 +5,20 @@ import hotelClassSVG from "./components/icons/hotel-class.svg";
 import editSVG from "./components/icons/edit.svg";
 import deleteSVG from "./components/icons/delete.svg";
 
-export default function toDoCardDom(getProjectArray, currentProjectIndex) {
+export default function toDoCardDom(
+  getProjectArray,
+  currentProjectIndex,
+  allImportantProject
+) {
   // display all the to do cards of each project
 
   const toDoSection = document.querySelector("#to-do-section");
   toDoSection.textContent = "";
 
   // determines whether to load all tasks/important/project
-  if (isNaN(currentProjectIndex) || currentProjectIndex.length === 0) {
-    currentProjectIndex.forEach(loadToDo);
+  if (currentProjectIndex === null) {
+    console.log(allImportantProject);
+    allImportantProject().forEach(loadToDo);
   } else {
     getProjectArray[currentProjectIndex].getProjectToDo().forEach(loadToDo);
   }
@@ -74,7 +79,8 @@ export default function toDoCardDom(getProjectArray, currentProjectIndex) {
     toDoDelete.appendChild(deleteIcon);
     toDoDelete.addEventListener("click", () => {
       getProjectArray[toDoObject.currentProject].deleteProjectToDo(toDoObject);
-      toDoCardDom(getProjectArray, currentProjectIndex);
+      console.log(`delete current project index: ${currentProjectIndex}`);
+      toDoCardDom(getProjectArray, currentProjectIndex, allImportantProject);
     });
 
     toDoButtons.appendChild(toDoFavorite);
