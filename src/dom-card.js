@@ -17,16 +17,12 @@ export default function toDoCardDom(
 
   // determines whether to load all tasks/important/project
   if (currentProjectIndex === null) {
-    console.log(allImportantProject);
     allImportantProject().forEach(loadToDo);
   } else {
     getProjectArray[currentProjectIndex].getProjectToDo().forEach(loadToDo);
   }
 
   function loadToDo(toDoObject, index) {
-    console.log(
-      `${toDoObject.getTitle()} Completed: ${toDoObject.getCompleted()} Priority: ${toDoObject.getPriority()}`
-    );
     const toDoCard = document.createElement("div");
     toDoCard.classList.add("to-do-card");
 
@@ -98,12 +94,7 @@ export default function toDoCardDom(
     toDoSection.appendChild(toDoCard);
   }
 
-  // display all to do cards for all projects
-  // display only important to do cards
   // when in (all to do/important), cannot allow user to add project
-  // all of the above depends on currentProjectIndex
-  //
-  // each cards need read, title, description, due date, important, edit, delete
 
   function completeCheckBox(toDoObject, checkBoxIcon, toDoTitle) {
     if (toDoObject.getCompleted() === false) {
