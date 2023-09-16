@@ -4,6 +4,7 @@ import starSVG from "./components/icons/star.svg";
 import hotelClassSVG from "./components/icons/hotel-class.svg";
 import editSVG from "./components/icons/edit.svg";
 import deleteSVG from "./components/icons/delete.svg";
+import doneSVG from "./components/icons/done.svg";
 
 export default function toDoCardDom(
   getProjectArray,
@@ -68,6 +69,9 @@ export default function toDoCardDom(
     const editIcon = new Image();
     editIcon.src = editSVG;
     toDoEdit.appendChild(editIcon);
+    toDoEdit.addEventListener("click", () => {
+      createToDoEditButton(toDoCard, toDoObject);
+    });
 
     const toDoDelete = document.createElement("button");
     const deleteIcon = new Image();
@@ -118,5 +122,57 @@ export default function toDoCardDom(
       starIcon.src = starSVG;
     }
     return starIcon;
+  }
+
+  function createToDoEditButton(parentEl, toDoObject) {
+    const editToDoDiv = document.createElement("div");
+    editToDoDiv.setAttribute("style", "position: absolute");
+    editToDoDiv.classList.add("edit-to-do-div");
+
+    const editToDoForm = document.createElement("form");
+    editToDoForm.setAttribute("action", "./index.html");
+    editToDoForm.classList.add("edit-to-do-form");
+    editToDoForm.addEventListener(
+      "submit",
+      (event) => {
+        event.preventDefault();
+
+        toDoObject.updateTitle(editToDoTitle.value);
+        toDoObject.updateDescription(editToDoDescription.value);
+        toDoObject.updateDueDate(editToDoDate.value);
+        editToDoDiv.textContent = "";
+        toDoCardDom(getProjectArray, currentProjectIndex, allImportantProject);
+      },
+      false
+    );
+
+    const editToDoTitle = document.createElement("input");
+    editToDoTitle.setAttribute("type", "text");
+    editToDoTitle.setAttribute("placeholder", "Edit To Do Name");
+    editToDoTitle.classList.add("edit-to-do-title");
+    editToDoForm.appendChild(editToDoTitle);
+
+    const editToDoDescription = document.createElement("input");
+    editToDoDescription.setAttribute("type", "text");
+    editToDoDescription.setAttribute("placeholder", "Edit To Do Description");
+    editToDoDescription.classList.add("edit-to-do-description");
+    editToDoForm.appendChild(editToDoDescription);
+
+    const editToDoDate = document.createElement("input");
+    editToDoDate.setAttribute("type", "date");
+    editToDoDate.setAttribute("placeholder", "Edit To Do Description");
+    editToDoDate.classList.add("edit-to-do-date");
+    editToDoForm.appendChild(editToDoDate);
+
+    const editToDoConfirm = document.createElement("button");
+    editToDoConfirm.setAttribute("type", "submit");
+    const doneIcon = new Image();
+    doneIcon.src = doneSVG;
+    editToDoConfirm.append(doneIcon);
+    editToDoForm.appendChild(editToDoConfirm);
+
+    editToDoDiv.appendChild(editToDoForm);
+
+    parentEl.appendChild(editToDoDiv);
   }
 }

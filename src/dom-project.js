@@ -125,6 +125,7 @@ export default function projectsDom({
         updateCurrentProjectIndex(index);
         toDoCardDom(getProjectArray(), getCurrentProjectIndex(), null);
         projectMainHeading.textContent = `${projectName.toUpperCase()}`;
+        addToDo.setAttribute("style", "display: flex");
       });
 
       const editIcon = new Image();
@@ -157,6 +158,7 @@ export default function projectsDom({
   toggleAddToDoDom();
 
   // create new to do card
+  const addToDo = document.querySelector(".add-to-do");
   const toDoTitle = document.querySelector("#to-do-title");
   const toDoDescription = document.querySelector("#to-do-description");
   const toDoDueDate = document.querySelector("#to-do-due-date");
@@ -185,4 +187,6 @@ export default function projectsDom({
     },
     false
   );
+
+  return { displayAllProjects };
 }
