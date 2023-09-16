@@ -187,6 +187,4 @@ export default function projectsDom({
     },
     false
   );
-
-  return { displayAllProjects };
 }

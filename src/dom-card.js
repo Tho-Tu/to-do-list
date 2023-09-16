@@ -79,7 +79,6 @@ export default function toDoCardDom(
     toDoDelete.appendChild(deleteIcon);
     toDoDelete.addEventListener("click", () => {
       getProjectArray[toDoObject.currentProject].deleteProjectToDo(toDoObject);
-      console.log(`delete current project index: ${currentProjectIndex}`);
       toDoCardDom(getProjectArray, currentProjectIndex, allImportantProject);
     });
 
@@ -166,6 +165,7 @@ export default function toDoCardDom(
 
     const editToDoConfirm = document.createElement("button");
     editToDoConfirm.setAttribute("type", "submit");
+    editToDoConfirm.classList.add("edit-to-do-submit-button");
     const doneIcon = new Image();
     doneIcon.src = doneSVG;
     editToDoConfirm.append(doneIcon);

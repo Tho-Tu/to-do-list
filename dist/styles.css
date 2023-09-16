@@ -193,6 +193,7 @@ button:active,
 .to-do-card,
 .add-to-do-card {
   display: grid;
+  position: relative;
   grid-template-columns: 50px 1fr 200px;
   grid-template-rows: 80px 1fr;
 
@@ -250,7 +251,40 @@ button:active,
 /* edit to do card */
 
 .edit-to-do-div {
-  /*  */
+  background-color: #fff1f2;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.edit-to-do-form {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  grid-auto-flow: column;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+}
+
+.edit-to-do-title,
+.edit-to-do-date {
+  font-family: var(--font-default);
+  height: 1rem;
+  height: 100%;
+}
+
+.edit-to-do-description {
+  height: 100%;
+  font-size: 1rem;
+}
+
+.edit-to-do-submit-button {
+  grid-row: 1/4;
+  grid-column: 2/3;
+  border: 1px solid;
+  border-radius: 8px;
 }
 
 /* add to do form */
