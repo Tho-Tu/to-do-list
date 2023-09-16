@@ -247,6 +247,12 @@ button:active,
   width: 24px;
 }
 
+/* edit to do card */
+
+.edit-to-do-div {
+  /*  */
+}
+
 /* add to do form */
 #add-to-do-form {
   display: flex;
