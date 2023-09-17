@@ -1,5 +1,3 @@
-import createToDo from "./create-to-do";
-import toDoCardDom from "./dom-card";
 import closeSVG from "./components/icons/close.svg";
 import addSVG from "./components/icons/add.svg";
 
