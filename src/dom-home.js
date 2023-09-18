@@ -1,4 +1,3 @@
-import createProject from "./create-project.js";
 import toDoCardDom from "./dom-card.js";
 
 export default function homeDom({
