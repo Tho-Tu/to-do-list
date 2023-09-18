@@ -178,10 +178,6 @@ export default function projectsDom({
         getCurrentProjectIndex()
       );
 
-      console.log(Object.getOwnPropertyNames(newToDo));
-
-      saveLocalStorage(toDoTitle.value, newToDo);
-
       getProjectArray()[getCurrentProjectIndex()].updateProjectToDo(newToDo);
 
       toDoCardDom(getProjectArray(), getCurrentProjectIndex(), null);
