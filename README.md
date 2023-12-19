@@ -1,11 +1,20 @@
 # to-do-list
 
-To do list for The Odin Project!
-I hope whoever sees this enjoys!
+Project Overview: To-Do List ✏️✍
 
-Features:
+This project is a simple and easy-to-use application to help you manage your tasks and projects. It was developed as part of The Odin Project curriculum.
 
-1. Separate projects
-2. Ability to create and edit new projects
-3. To-dos within each project
-4. Ability to check off, favorite, edit and delete to-dos
+## 📋 Features
+
+- Separate projects to organize your tasks
+- Create, edit, and delete projects
+- Add to-dos within each project
+- Check off completed to-dos
+- Favorite important to-dos
+- Edit and delete to-dos
+
+## 🚀 Demo
+
+Explore the live demo of the project: https://tho-tu.github.io/to-do-list/
+
+Enjoy using To-Do List!
